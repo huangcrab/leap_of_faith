@@ -1,0 +1,49 @@
+.background {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -99;
+}
+
+.brand {
+  margin: 40px;
+}
+
+.brand img {
+  height: 80px;
+}
+
+.navbar ul li {
+  font-size: 30px;
+  display: inline-block;
+  margin: 30px 100px;
+  position: relative;
+  padding: 10px;
+}
+
+.navbar ul li:after {
+  content: "";
+  display: block;
+  height: 8px;
+  background-color: var(--primary-color);
+
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transform: scale(0, 1);
+  transition: transform ease-in-out 200ms;
+  transform-origin: center;
+}
+
+.navbar ul li:hover::after {
+  transform: scale(1, 1);
+}
+
+.navbar ul li a {
+  text-decoration: none;
+}
