@@ -57,8 +57,8 @@ export default class ThreeBack extends Component {
     const geometry = new THREE.PlaneBufferGeometry(
       ((vHeight * width) / height) * 1.1,
       vHeight * 1.22,
-      100,
-      100
+      1,
+      1
     );
 
     const texture = new THREE.TextureLoader().load(back);

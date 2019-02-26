@@ -12,6 +12,7 @@
 .landing-title h1,
 .landing-title p {
   position: relative;
+  text-shadow: 2px 2px 10px #333;
 }
 
 .landing-title p {

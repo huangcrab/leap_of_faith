@@ -16,8 +16,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <ThreeBack />
-          {/* <Background /> */}
+          {/* <ThreeBack /> */}
+          <Background />
           <Route exact path="/" component={Landing} />
           {/* <Route exact path="/content" component={Content} />
           <Route exact path="/logic" component={Logic} /> */}
