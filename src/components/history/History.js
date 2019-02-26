@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import Navbar from "../layout/Navbar";
 
 export default class History extends Component {
   render() {
-    return <div>History</div>;
+    return (
+      <div>
+        <Navbar />History
+      </div>
+    );
   }
 }

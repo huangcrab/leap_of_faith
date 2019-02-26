@@ -6,3 +6,7 @@
 body {
   overflow: hidden;
 }
+
+.brand-img {
+  height: 40px;
+}

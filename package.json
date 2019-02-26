@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "materialize-css": "^1.0.0-rc.2",
+    "postprocessing": "^5.6.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "three": "^0.101.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,0 +1,36 @@
+.navbar {
+  margin: 40px;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin: 0 60px;
+  position: relative;
+}
+
+.navbar ul li:after {
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: var(--primary-color);
+
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transform: scale(0, 1);
+  transition: transform ease-in-out 200ms;
+  transform-origin: center;
+}
+
+.navbar ul li:hover::after {
+  transform: scale(1, 1);
+}
+
+.navbar ul li.active {
+  transform: scale(1, 1);
+}
+
+.navbar ul li a {
+  text-decoration: none;
+}
