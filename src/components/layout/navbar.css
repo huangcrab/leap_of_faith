@@ -27,10 +27,10 @@
   transform: scale(1, 1);
 }
 
-.navbar ul li.active {
-  transform: scale(1, 1);
-}
-
 .navbar ul li a {
   text-decoration: none;
+}
+
+li.active {
+  color: red;
 }

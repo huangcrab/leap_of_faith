@@ -7,6 +7,7 @@ import History from "./components/history/History";
 import Logic from "./components/logic/Logic";
 import Background from "./components/layout/Background";
 import ThreeBack from "./components/layout/ThreeBack";
+import Navbar from "./components/layout/Navbar";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -20,12 +21,15 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            {/* <ThreeBack /> */}
-            <Background />
+            <ThreeBack />
+            {/* <Background /> */}
             <Route exact path="/" component={Landing} />
+
             {/* <Route exact path="/content" component={Content} />
           <Route exact path="/logic" component={Logic} /> */}
+
             <Route exact path="/history" component={History} />
+
             {/* <Route exact path="/automation" component={Automation} /> */}
           </div>
         </Router>

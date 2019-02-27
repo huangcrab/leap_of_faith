@@ -23,7 +23,7 @@ export default class Navbar extends Component {
               Logic
             </Link>
           </li>
-          <li>
+          <li className={this.props.active === "history" ? "active" : ""}>
             <Link className="white-text" to="/History">
               History
             </Link>

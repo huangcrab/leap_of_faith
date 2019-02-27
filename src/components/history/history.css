@@ -1,0 +1,9 @@
+.history {
+  width: 95%;
+}
+
+.history-container {
+  border-radius: 6px;
+  height: 80vh;
+  margin: 0 10px;
+}

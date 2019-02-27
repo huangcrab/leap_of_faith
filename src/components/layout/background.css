@@ -23,7 +23,7 @@
 
 .landing-title h1::before {
   color: #f0f;
-  z-index: -2;
+  z-index: -1;
 }
 
 .landing-title h1::after {
