@@ -6,7 +6,6 @@
   display: inline-block;
   margin: 0 60px;
   position: relative;
-  font-weight: bold;
 }
 
 .navbar ul li:after {
