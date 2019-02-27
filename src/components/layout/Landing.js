@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import logo from "../../assets/img/logo.svg";
+
+import { setGlitch } from "../../actions/uxActions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 import "./landing.css";
-export default class Landing extends Component {
+class Landing extends Component {
   onMouseEnter = e => {
-    console.log(e);
+    this.props.setGlitch();
   };
   onMouseLeave = e => {
-    console.log(e);
+    this.props.setGlitch();
   };
 
   render() {
@@ -28,3 +33,12 @@ export default class Landing extends Component {
     );
   }
 }
+
+Landing.propTypes = {
+  setGlitch: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { setGlitch }
+)(Landing);

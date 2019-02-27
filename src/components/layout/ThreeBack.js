@@ -5,12 +5,19 @@ import {
   BloomEffect,
   EffectComposer,
   EffectPass,
-  RenderPass
+  RenderPass,
+  GlitchEffect,
+  GlitchMode
 } from "postprocessing";
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 import "./scene.css";
-export default class ThreeBack extends Component {
-  static getDerivedStateFromProps(props, state) {}
+class ThreeBack extends Component {
+  state = {
+    isGlitch: false
+  };
 
   componentDidMount() {
     window.onresize = this.onWindowResize;
@@ -38,20 +45,18 @@ export default class ThreeBack extends Component {
     this.composer = new EffectComposer(this.renderer);
 
     //Post Effect
-    const effectPass = new EffectPass(
+    this.effectPass = new EffectPass(
       this.camera,
       new BloomEffect({
         //dithering: true
       })
     );
-    effectPass.renderToScreen = true;
+    this.effectPass.renderToScreen = true;
+    const glitchEffect = new GlitchEffect();
+    glitchEffect.mode = GlitchMode.CONSTANT_MILD;
+    this.glitcheffectPass = new EffectPass(this.camera, glitchEffect);
 
-    //ADD CUBE
-    // const geometry = new THREE.BoxGeometry(1, 1, 1);
-    // const material = new THREE.MeshBasicMaterial({ color: "#433F81" });
-    // this.cube = new THREE.Mesh(geometry, material);
-    // this.scene.add(this.cube);
-
+    //calculate height of the plane
     let vHeight = 2 * Math.tan(THREE.Math.degToRad(this.camera.fov) / 2) * 5;
 
     const geometry = new THREE.PlaneBufferGeometry(
@@ -64,7 +69,6 @@ export default class ThreeBack extends Component {
     const texture = new THREE.TextureLoader().load(back);
     const material = new THREE.MeshBasicMaterial({
       map: texture
-      //wireframe: true
     });
     material.map.minFilter = THREE.LinearFilter;
 
@@ -72,13 +76,27 @@ export default class ThreeBack extends Component {
 
     this.scene.add(this.plane);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    this.composer.addPass(effectPass);
+    this.composer.addPass(this.effectPass);
+
     this.start();
   }
   componentWillUnmount() {
     this.stop();
     this.mount.removeChild(this.renderer.domElement);
   }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log(nextProps.isGlitch);
+    if (nextProps.isGlitch) {
+      this.effectPass.renderToScreen = false;
+      this.glitcheffectPass.renderToScreen = true;
+      this.composer.addPass(this.glitcheffectPass);
+    } else {
+      this.composer.removePass(this.glitcheffectPass);
+      this.glitcheffectPass.renderToScreen = false;
+      this.effectPass.renderToScreen = true;
+    }
+  }
+
   start = () => {
     if (!this.frameId) {
       this.frameId = requestAnimationFrame(this.animate);
@@ -90,13 +108,14 @@ export default class ThreeBack extends Component {
   animate = () => {
     // this.plane.rotation.x += 0.01;
     // this.plane.rotation.y += 0.01;
+
     this.updateCameraPositionRelativeToMouse();
     this.renderScene();
     this.frameId = window.requestAnimationFrame(this.animate);
   };
   renderScene = () => {
     //this.renderer.render(this.scene, this.camera);
-    this.composer.render(this.scene, this.camera);
+    this.composer.render(this.clock.getDelta());
   };
 
   onWindowResize = () => {
@@ -129,3 +148,10 @@ export default class ThreeBack extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ isGlitch: state.ux.isGlitch });
+
+export default connect(
+  mapStateToProps,
+  null
+)(ThreeBack);
