@@ -19,8 +19,8 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <div className="center brand">
-          <img className="brand-img" src={logo} alt="AuthorMaster" />
+        <div className="center brand-landing">
+          <img className="brand-img valign" src={logo} alt="AuthorMaster" />
         </div>
         <Navbar />
         <div className="landing-title">

@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo.svg";
+import logo_img from "../../assets/img/logo.svg";
 
 import "./navbar.css";
 export default class Navbar extends Component {
   render() {
+    const { logo } = this.props;
     return (
       <div className="navbar">
+        {logo ? (
+          <Link to="/" className="nav-logo left">
+            <img className="brand-img" src={logo_img} alt="AuthorMaster" />
+          </Link>
+        ) : null}
+
         <ul className="center">
           <li>
             <Link className="white-text" to="/automation">

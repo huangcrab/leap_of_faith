@@ -53,7 +53,7 @@ class ThreeBack extends Component {
     );
     this.effectPass.renderToScreen = true;
     const glitchEffect = new GlitchEffect();
-    glitchEffect.mode = GlitchMode.CONSTANT_MILD;
+    //glitchEffect.mode = GlitchMode.CONSTANT_MILD;
     this.glitcheffectPass = new EffectPass(this.camera, glitchEffect);
 
     //calculate height of the plane

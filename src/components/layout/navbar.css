@@ -1,5 +1,5 @@
 .navbar {
-  margin: 40px;
+  margin: 40px 0;
 }
 
 .navbar ul li {
@@ -33,4 +33,8 @@
 
 li.active {
   color: red;
+}
+
+.nav-logo {
+  margin: 0 10px;
 }

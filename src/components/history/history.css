@@ -5,5 +5,18 @@
 .history-container {
   border-radius: 6px;
   height: 80vh;
-  margin: 0 10px;
+}
+
+.history-search,
+.history-analytic {
+  color: white;
+  background: #454545;
+}
+
+.history-main {
+  background: #bcdaf2;
+}
+
+.env-select .select-wrapper .select-dropdown {
+  color: white;
 }
