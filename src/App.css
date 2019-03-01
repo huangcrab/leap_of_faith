@@ -10,3 +10,24 @@ body {
 .brand-img {
   height: 40px;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #366088;
+}
+
+.icon-group .icon {
+  margin: 0 0 0 10px;
+}

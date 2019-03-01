@@ -1,22 +1,159 @@
 .history {
   width: 95%;
 }
-
+.history-sections {
+  height: 80vh;
+}
 .history-container {
   border-radius: 6px;
-  height: 80vh;
+  height: 100%;
+  position: relative;
+  box-shadow: 5px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .history-search,
 .history-analytic {
   color: white;
   background: #454545;
+  padding: 0 5px;
 }
 
 .history-main {
   background: #bcdaf2;
+  padding: 15px 9px;
+}
+
+.input-field.env-select {
+  margin: 0;
 }
 
 .env-select .select-wrapper .select-dropdown {
   color: white;
+  border-bottom: 2px solid;
+  font-size: 12px;
+}
+
+.env-select .select-wrapper .dropdown-trigger {
+  height: 30px;
+}
+
+.env-select .select-wrapper .select-dropdown:focus {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.env-select .select-wrapper .caret {
+  fill: white;
+  zoom: 1.5;
+}
+.search-bar {
+  margin-bottom: 0 !important;
+}
+.search-bar .input-field input[type="text"] {
+  height: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.search-bar .input-field input[type="text"]:focus {
+  border-bottom: 2px solid var(--secondary-color) !important;
+}
+
+.search-icon {
+  position: relative;
+  top: 10px;
+}
+
+.result-collection {
+  margin-top: 0;
+}
+.search-result {
+  height: 80%;
+  overflow-y: scroll;
+}
+.result-item {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: auto;
+  background: white;
+  color: black;
+  padding: 5px 10px;
+}
+
+.result-item .upper {
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
+.result-item.field .upper {
+  border-bottom: 10px solid var(--secondary-color);
+  padding-bottom: 0;
+}
+
+.result-item .lower {
+  font-weight: normal;
+}
+
+.result-item:hover,
+.result-item.focus {
+  background: #bcdaf2;
+}
+
+.search-pagination {
+  margin: 0;
+  padding: auto;
+}
+.history-main .history-list {
+  height: 90%;
+  overflow-y: scroll;
+  padding: 0 9px;
+}
+
+.history-main .header {
+  position: relative;
+  margin: 0;
+  padding: 0 8px;
+  height: 30px;
+}
+
+.history-main .footer {
+  position: relative;
+  margin: 0;
+  height: 30px;
+  padding: 0 8px;
+  bottom: 0;
+}
+.collapsible {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+}
+.collapsible li {
+  border: none !important;
+}
+.collapsible-header {
+  border-radius: 8px;
+  display: block !important;
+  box-shadow: none;
+  display: block;
+  margin-bottom: 10px;
+
+  padding: 0 !important;
+}
+.collapsible-header .result-item {
+  margin-bottom: 0;
+}
+.collapsible-header .result-item .upper {
+  border-bottom: 1px solid #a2d6d8;
+  padding-bottom: 3px;
+}
+.collapsible-body {
+  background: white;
+  border: none;
+  box-shadow: none;
+}
+
+.collapsible-header.focus {
+  border: 1px solid #46adb2;
 }
