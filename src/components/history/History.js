@@ -831,9 +831,10 @@ export default class History extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="footer row">
-                <div className="col s12 m6 left-align">FTTH Assruance</div>
-                <div className="col s12 m6 right-align">BELL\B67221</div>
+
+              <div className="row footer">
+                <div className="col s12 m6 left-align ">FTTH Assruance</div>
+                <div className="col s12 m6 right-align ">BELL\B67221</div>
               </div>
             </div>
           </div>

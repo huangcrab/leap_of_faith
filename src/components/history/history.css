@@ -105,25 +105,27 @@
   padding: auto;
 }
 .history-main .history-list {
-  height: 90%;
+  height: 92%;
   overflow-y: scroll;
   padding: 0 9px;
 }
 
 .history-main .header {
-  position: relative;
   margin: 0;
   padding: 0 8px;
   height: 30px;
+  font-weight: bold;
 }
 
 .history-main .footer {
-  position: relative;
+  width: 100%;
+  position: absolute;
   margin: 0;
   height: 30px;
   padding: 0 8px;
   bottom: 0;
 }
+
 .collapsible {
   border: none !important;
   box-shadow: none !important;
@@ -138,7 +140,6 @@
   box-shadow: none;
   display: block;
   margin-bottom: 10px;
-
   padding: 0 !important;
 }
 .collapsible-header .result-item {
@@ -147,6 +148,11 @@
 .collapsible-header .result-item .upper {
   border-bottom: 1px solid #a2d6d8;
   padding-bottom: 3px;
+}
+
+.collapsible-header .result-item .lower {
+  font-weight: bold;
+  padding-top: 2px;
 }
 .collapsible-body {
   background: white;
