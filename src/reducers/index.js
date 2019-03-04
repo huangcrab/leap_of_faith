@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import uxReducers from "./uxReducers";
+import historyReducers from "./historyReducers";
 
 export default combineReducers({
-  ux: uxReducers
+  ux: uxReducers,
+  history: historyReducers
 });
