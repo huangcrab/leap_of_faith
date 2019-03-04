@@ -19,7 +19,9 @@
 }
 
 .history-main {
+  display: table;
   background: #bcdaf2;
+  width: 100%;
   padding: 15px 9px;
 }
 
@@ -73,7 +75,7 @@
 .result-item {
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
   overflow: auto;
   background: white;
@@ -105,12 +107,13 @@
   padding: auto;
 }
 .history-main .history-list {
-  height: 92%;
+  height: 100%;
   overflow-y: scroll;
   padding: 0 9px;
 }
 
 .history-main .header {
+  display: table-row;
   margin: 0;
   padding: 0 8px;
   height: 30px;
@@ -118,12 +121,13 @@
 }
 
 .history-main .footer {
-  width: 100%;
-  position: absolute;
-  margin: 0;
+  display: table-row;
   height: 30px;
-  padding: 0 8px;
-  bottom: 0;
+}
+
+.history-main .footer .left-align,
+.history-main .footer .right-align {
+  padding-top: 8px;
 }
 
 .collapsible {
@@ -135,12 +139,14 @@
   border: none !important;
 }
 .collapsible-header {
+  position: relative;
   border-radius: 8px;
   display: block !important;
   box-shadow: none;
   display: block;
   margin-bottom: 10px;
   padding: 0 !important;
+  z-index: 1;
 }
 .collapsible-header .result-item {
   margin-bottom: 0;
@@ -155,11 +161,50 @@
   padding-top: 2px;
 }
 .collapsible-body {
+  z-index: 0;
+  position: relative;
+  top: -20px;
+  border-radius: 8px;
   background: white;
-  border: none;
+  border: 1px solid #46adb2;
   box-shadow: none;
 }
 
 .collapsible-header.focus {
   border: 1px solid #46adb2;
+}
+
+.history-analytic {
+  padding: 15px 18px;
+}
+
+.history-analytic .collection {
+  border: none;
+  border-radius: 8px;
+}
+
+.history-analytic .analytic-data {
+  background: white;
+  border-radius: 8px;
+  color: black;
+  margin-top: 15px;
+  padding: 9px;
+}
+
+.history-analytic .collection .collection-item {
+  border-bottom: 1px solid #a2d6d8 !important;
+  padding: 4px 2px 0 2px;
+  font-weight: bold;
+}
+
+.history-analytic .analytic-title {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.history-analytic .step-number {
+  font-weight: bold;
+  font-size: 60px;
+
+  color: #fd7f80;
 }

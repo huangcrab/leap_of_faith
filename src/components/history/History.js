@@ -839,7 +839,44 @@ export default class History extends Component {
             </div>
           </div>
           <div className=" col s12 m3 history-sections ">
-            <div className="history-analytic history-container">Search</div>
+            <div className="history-analytic history-container">
+              <div className="center analytic-title">Analytics</div>
+              <div className="analytic-data">
+                <div className="collection-one collection">
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                </div>
+                <div className="collection-two collection">
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                  <div className="collection-item">
+                    <span className="badge">15</span>Info:
+                  </div>
+                </div>
+
+                <div className="step-number center">25</div>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>
