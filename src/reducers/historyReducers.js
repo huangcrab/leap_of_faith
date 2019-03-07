@@ -7,7 +7,9 @@ import {
   HISTORY_DETAIL_LOADING,
   HISTORY_DETAIL_ID_LOADING,
   GET_HISTORY_DETAIL_ID,
-  GET_HISTORY_DETAIL
+  GET_HISTORY_DETAIL,
+  SET_BASIC_ANALYTICS,
+  RESET_HISTORY
 } from "../actions/types";
 
 const initialState = {
@@ -24,6 +26,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_HISTORY:
+      return {
+        ...state,
+        history_search: [],
+        history_detail: {}
+      };
     case HISTORY_INPUT_ERROR:
       return {
         ...state,
@@ -77,6 +85,15 @@ export default function(state = initialState, action) {
           ...action.payload
         },
         history_detail_id_loading: false
+      };
+
+    case SET_BASIC_ANALYTICS:
+      return {
+        ...state,
+        history_detail: {
+          ...state.history_detail,
+          ...action.payload
+        }
       };
     default:
       return state;

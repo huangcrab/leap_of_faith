@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import M from "materialize-css";
 
 import HistoryDetailItem from "./HistoryDetailItem";
 
@@ -20,9 +21,29 @@ const Header = styled.div`
   font-weight: bold;
 `;
 
+const Collapsible = styled.ul`
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+
+  & li {
+    border: none !important;
+  }
+`;
+
+const HistoryList = styled.div`
+  height: 100%;
+  overflow-y: scroll;
+  padding: 0 9px;
+`;
+
 const Footer = styled.div`
   display: table-row;
   height: 30px;
+  & .left-align,
+  & .right-align {
+    padding-top: 8px !important;
+  }
 `;
 
 class HistoryMain extends Component {
@@ -31,6 +52,17 @@ class HistoryMain extends Component {
     history_detail_loading: false,
     history_detail_id_loading: false
   };
+
+  constructor(props) {
+    super(props);
+    this.collapse = React.createRef();
+  }
+
+  componentDidMount() {
+    M.Collapsible.init(this.collapse.current, {
+      accordion: false
+    });
+  }
 
   static getDerivedStateFromProps(props) {
     return {
@@ -63,21 +95,22 @@ class HistoryMain extends Component {
             </React.Fragment>
           ) : null}
         </Header>
-        <div className="history-list">
-          <ul className="collapsible">
+        <HistoryList className="history-list">
+          <Collapsible className="collapsible" ref={this.collapse}>
             {history_detail.detail &&
             !history_detail_loading &&
             !history_detail_id_loading
               ? history_detail.detail.map((item, index) => (
                   <HistoryDetailItem
+                    key={index}
                     item={item}
                     item_id={history_detail.detail_with_id[index].stepId}
                     dynamic={item.dynamicContentParameters}
                   />
                 ))
               : null}
-          </ul>
-        </div>
+          </Collapsible>
+        </HistoryList>
 
         <Footer className="row footer">
           {history_detail.info ? (
@@ -97,7 +130,9 @@ class HistoryMain extends Component {
 }
 
 HistoryMain.propTypes = {
-  history_detail: PropTypes.object.isRequired
+  history_detail: PropTypes.object.isRequired,
+  history_detail_loading: PropTypes.bool.isRequired,
+  history_detail_id_loading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({

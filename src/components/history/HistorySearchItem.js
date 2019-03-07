@@ -35,7 +35,7 @@ class HistorySearchItem extends Component {
       flowName,
       agentId,
       bitsType,
-      bpEndTime,
+
       bpStartTime
     } = this.props.item;
     const start = new Date(bpStartTime);

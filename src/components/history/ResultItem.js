@@ -28,4 +28,10 @@ export const ResultItem = styled.li`
   &.focus {
     background: #bcdaf2;
   }
+
+  & .icon-group.disable {
+    & .icon {
+      opacity: 0.4;
+    }
+  }
 `;

@@ -7,7 +7,9 @@ import {
   HISTORY_DETAIL_LOADING,
   GET_HISTORY_DETAIL,
   GET_HISTORY_DETAIL_ID,
-  HISTORY_DETAIL_ID_LOADING
+  HISTORY_DETAIL_ID_LOADING,
+  SET_BASIC_ANALYTICS,
+  RESET_HISTORY
 } from "./types";
 
 import axios from "axios";
@@ -17,6 +19,12 @@ export const setEnvironmnet = env => dispatch => {
   dispatch({
     type: SET_ENV,
     payload: env
+  });
+};
+
+export const resetHistory = () => dispatch => {
+  dispatch({
+    type: RESET_HISTORY
   });
 };
 
@@ -35,6 +43,7 @@ export const getHistoryDetail = (id, info, env) => dispatch => {
           detail: res.data
         }
       });
+      dispatch(pullBasicAnalytics(res.data));
     })
     .catch(err =>
       dispatch({
@@ -96,6 +105,27 @@ export const getHistorySearch = (id, env) => dispatch => {
         })
       );
   }
+};
+
+export const pullBasicAnalytics = data => {
+  const result = data
+    .map(item => item.type)
+    .reduce((acc, item2) => {
+      acc[item2] = (acc[item2] || 0) + 1;
+      return acc;
+    }, {});
+
+  result.integration = data.filter(
+    item =>
+      item.dynamicContentParameters &&
+      item.dynamicContentParameters.length > 0 &&
+      item.dynamicContentParameters[0].key !== ""
+  ).length;
+
+  return {
+    type: SET_BASIC_ANALYTICS,
+    payload: { analytic: result }
+  };
 };
 
 export const setHistorySearchLoading = () => {

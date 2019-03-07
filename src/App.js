@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import Landing from "./components/layout/Landing";
 import History from "./components/history/History";
-import Logic from "./components/logic/Logic";
+
 import Background from "./components/layout/Background";
-import ThreeBack from "./components/layout/ThreeBack";
-import Navbar from "./components/layout/Navbar";
+//import ThreeBack from "./components/layout/ThreeBack";
 
 import { Provider } from "react-redux";
 import store from "./store";

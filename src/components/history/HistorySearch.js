@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import {
+  resetHistory,
   getHistorySearch,
   getHistoryDetail
 } from "../../actions/historyActions";
@@ -72,8 +73,10 @@ class HistorySearch extends Component {
   };
 
   onSearchClick = () => {
+    this.props.resetHistory();
+
     if (this.state.tn.indexOf("-") !== -1) {
-      this.props.getHistorySearch(this.state.tn, this.state.env);
+      this.props.getHistoryDetail(this.state.tn, {}, this.state.env);
     } else {
       this.props.getHistorySearch(this.state.tn, this.state.env);
     }
@@ -107,8 +110,8 @@ class HistorySearch extends Component {
           <ul className="result-collection">
             {loading_result
               ? "Loading"
-              : history_search.map(history => (
-                  <HistorySearchItem item={history} env={env} />
+              : history_search.map((history, index) => (
+                  <HistorySearchItem key={index} item={history} env={env} />
                 ))}
           </ul>
         </SearchResult>
@@ -120,7 +123,8 @@ class HistorySearch extends Component {
 HistorySearch.propTypes = {
   history: PropTypes.object.isRequired,
   getHistoryDetail: PropTypes.func.isRequired,
-  getHistorySearch: PropTypes.func.isRequired
+  getHistorySearch: PropTypes.func.isRequired,
+  resetHistory: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -129,5 +133,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getHistoryDetail, getHistorySearch }
+  { getHistoryDetail, getHistorySearch, resetHistory }
 )(HistorySearch);

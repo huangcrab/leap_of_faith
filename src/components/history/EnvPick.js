@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { setEnvironmnet } from "../../actions/historyActions";
+import M from "materialize-css";
 
 const EnvSelect = styled.div`
   &.input-field {
@@ -26,8 +27,10 @@ const EnvSelect = styled.div`
 `;
 
 class EnvPick extends Component {
+  componentDidMount() {
+    M.AutoInit();
+  }
   onSelection = e => {
-    console.log(e.target.value);
     this.props.setEnvironmnet(e.target.value);
   };
 
@@ -35,7 +38,9 @@ class EnvPick extends Component {
     return (
       <EnvSelect className="input-field col s12">
         <select onChange={this.onSelection}>
-          <option defaultValue="PROD">Environment: PROD</option>
+          <option defaultValue="PROD" value="PROD">
+            Environment: PROD
+          </option>
           <option value="BTE1">Environment: BTE1</option>
           <option value="BTE2">Environment: BTE2</option>
           <option value="AGENT">Environment: AGENT</option>

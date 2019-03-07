@@ -82,6 +82,7 @@ class ThreeBack extends Component {
   }
   componentWillUnmount() {
     this.stop();
+    window.onresize = this.mount.onresize;
     this.mount.removeChild(this.renderer.domElement);
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
