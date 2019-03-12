@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import classnames from "classnames";
 
-import { getActionUrl } from "../../apis";
+import { getActionUrl, getLinkUrl } from "../../apis";
 import EditIcon from "../../assets/img/edit.svg";
 import ImageIcon from "../../assets/img/image.svg";
 import IntegrationIcon from "../../assets/img/integration.svg";
@@ -106,15 +106,7 @@ class HistoryDetailItem extends Component {
       axios
         .get(`${apiUrl}/getContent/${id}`)
         .then(res => {
-          const { body_en } = res.data;
-          const { overlay_id } = res.data;
-          this.setState({ validation: validateContent(body_en) });
-
-          if (overlay_id !== "") {
-            this.setState({
-              validation: { ...this.state.validation, hasOverlay: true }
-            });
-          }
+          this.setState({ validation: validateContent(res.data) });
 
           this.setState({ content: res.data });
           this.setState({ loading: false });
@@ -164,7 +156,9 @@ class HistoryDetailItem extends Component {
                   <a
                     rel="noopener noreferrer"
                     target="_blank"
-                    href={`https://ae-adminui-bp.int.bell.ca/#/app/2066.663df20f-f401-479f-9639-57e28e349386/snapshot/${
+                    href={`${getLinkUrl(
+                      "adminui"
+                    )}/app/2066.663df20f-f401-479f-9639-57e28e349386/snapshot/${
                       content.snapshot_id
                     }/process/${content.block_id}?step=${content.content_id}`}
                   >
@@ -192,8 +186,17 @@ class HistoryDetailItem extends Component {
                       alt="integration"
                     />
                   ) : null}
+
                   {hasOverlay ? (
-                    <img className="icon" src={VideoIcon} alt="overlay" />
+                    <a
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={`${getLinkUrl("adminui")}/overlay/${
+                        content.overlay_id
+                      }`}
+                    >
+                      <img className="icon" src={VideoIcon} alt="overlay" />
+                    </a>
                   ) : null}
                   {hasImage ? (
                     <img className="icon" src={ImageIcon} alt="content_image" />

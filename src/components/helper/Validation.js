@@ -1,4 +1,7 @@
-export function validateContent(body) {
+export function validateContent(data) {
+  const body = data.body_en;
+  const overlay_id = data.overlay_id;
+
   const validation = {
     hasImage: false,
     hasIntegration: false,
@@ -16,6 +19,10 @@ export function validateContent(body) {
 
     if (body.indexOf(".jpg") !== -1 || body.indexOf(".png") !== -1) {
       validation.hasImage = true;
+    }
+
+    if (overlay_id !== "") {
+      validation.hasOverlay = true;
     }
   }
 
