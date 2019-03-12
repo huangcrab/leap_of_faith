@@ -12,6 +12,10 @@ export default class Background extends Component {
     window.onmousemove = this.onmousemove;
   }
 
+  componentWillUnmount() {
+    window.onmousemove = this.back.onmousemove;
+  }
+
   onmousemove = e => {
     const pageX = e.pageX - Math.round(this.back.current.offsetWidth / 2);
     const pageY = e.pageY - Math.round(this.back.current.offsetHeight / 2);

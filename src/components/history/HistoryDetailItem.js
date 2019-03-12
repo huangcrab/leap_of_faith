@@ -10,6 +10,9 @@ import IntegrationIcon from "../../assets/img/integration.svg";
 import LanguageIcon from "../../assets/img/language.svg";
 import VideoIcon from "../../assets/img/video.svg";
 
+import HistoryDetailItemBody from "./HistoryDetailItemBody";
+import DynamicParams from "./DynamicParams";
+
 import { validateContent } from "../helper/Validation";
 
 import { ResultItem } from "./ResultItem";
@@ -60,6 +63,16 @@ const CollapsibleHeader = styled.div`
       text-overflow: ellipsis;
     }
   }
+`;
+
+const CollapsibleBody = styled.div`
+  z-index: 0;
+  position: relative;
+  top: -20px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #46adb2;
+  box-shadow: none;
 `;
 
 class HistoryDetailItem extends Component {
@@ -124,7 +137,7 @@ class HistoryDetailItem extends Component {
   };
   render() {
     const { question, answer } = this.props.item;
-    const id = this.props.item_id;
+
     const { focus, content } = this.state;
     const {
       hasImage,
@@ -190,9 +203,10 @@ class HistoryDetailItem extends Component {
             </div>
           </ResultItem>
         </CollapsibleHeader>
-        <div className="collapsible-body">
-          <span>Lorem ipsum dolor sit amet.</span>
-        </div>
+        <CollapsibleBody className="collapsible-body">
+          {content != {} ? <HistoryDetailItemBody content={content} /> : null}
+          <DynamicParams dynamic={this.props.dynamic} />
+        </CollapsibleBody>
       </Item>
     );
   }

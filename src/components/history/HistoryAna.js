@@ -44,7 +44,7 @@ class HistoryAna extends Component {
                 <span className="badge">
                   {history_detail.analytic.integration}
                 </span>
-                Integration Step:
+                Integration/Data Step:
               </div>
             ) : null}
             {history_detail.full_analytic ? (

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 class HistoryDetailItemBody extends Component {
   render() {
-    return <div />;
+    return <div>lorem</div>;
   }
 }
 
