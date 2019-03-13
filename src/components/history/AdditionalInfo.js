@@ -19,7 +19,6 @@ class AdditionalInfo extends Component {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      show: nextProps.show,
       fr: nextProps.fr
     };
   }

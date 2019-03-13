@@ -10,26 +10,19 @@ const Quote = styled.blockquote`
   }
 `;
 
-const displayItem = item => {
-  if (item.type === "TABLE") {
-  } else {
-    if (item.key !== "") {
-      return (
-        <div>
-          {item.key}:<span> {item.value}</span>
-        </div>
-      );
-    } else return null;
-  }
-};
-
 export default function DynamicParams(props) {
   const { dynamic } = props;
   return (
     <Quote>
       {dynamic
         ? dynamic.map(item => {
-            displayItem(item);
+            if (item.key !== "" && item.type !== "TABLE") {
+              return (
+                <div>
+                  {item.key}:<span> {item.value}</span>
+                </div>
+              );
+            } else return null;
           })
         : null}
     </Quote>
