@@ -16,8 +16,7 @@ import {
 const initialState = {
   environment: "PROD",
   history_search: [],
-  history_detail: {},
-
+  history_detail: { fullAnalytics: [] },
   history_search_loading: false,
   history_detail_loading: false,
   history_detail_id_loading: false,
@@ -32,7 +31,9 @@ export default function(state = initialState, action) {
       return {
         ...state,
         history_search: [],
-        history_detail: {}
+        history_detail: {
+          fullAnalytics: []
+        }
       };
     case HISTORY_INPUT_ERROR:
       return {
@@ -97,15 +98,15 @@ export default function(state = initialState, action) {
         }
       };
 
-    // case SET_FULL_ANALYTICS: {
-    //   const x = state.history_detail.fullAnalytics;
-    //   x.push(action.payload);
+    case SET_FULL_ANALYTICS: {
+      const x = state.history_detail.fullAnalytics;
+      x.push(action.payload);
 
-    //   return {
-    //     ...state,
-    //     history_detail: { ...state.history_detail, fullAnalytics: x }
-    //   };
-    // }
+      return {
+        ...state,
+        history_detail: { ...state.history_detail, fullAnalytics: x }
+      };
+    }
 
     default:
       return state;
