@@ -9,6 +9,7 @@ import {
   GET_HISTORY_DETAIL_ID,
   HISTORY_DETAIL_ID_LOADING,
   SET_BASIC_ANALYTICS,
+  SET_FULL_ANALYTICS,
   RESET_HISTORY
 } from "./types";
 
@@ -105,6 +106,14 @@ export const getHistorySearch = (id, env) => dispatch => {
         })
       );
   }
+};
+
+export const updateFullAnalytics = (validation, index) => dispatch => {
+  dispatch({
+    type: SET_FULL_ANALYTICS,
+    id: index,
+    payload: validation
+  });
 };
 
 export const pullBasicAnalytics = data => {

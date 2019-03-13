@@ -9,13 +9,15 @@ import {
   GET_HISTORY_DETAIL_ID,
   GET_HISTORY_DETAIL,
   SET_BASIC_ANALYTICS,
-  RESET_HISTORY
+  RESET_HISTORY,
+  SET_FULL_ANALYTICS
 } from "../actions/types";
 
 const initialState = {
   environment: "PROD",
   history_search: [],
   history_detail: {},
+
   history_search_loading: false,
   history_detail_loading: false,
   history_detail_id_loading: false,
@@ -86,7 +88,6 @@ export default function(state = initialState, action) {
         },
         history_detail_id_loading: false
       };
-
     case SET_BASIC_ANALYTICS:
       return {
         ...state,
@@ -95,6 +96,17 @@ export default function(state = initialState, action) {
           ...action.payload
         }
       };
+
+    // case SET_FULL_ANALYTICS: {
+    //   const x = state.history_detail.fullAnalytics;
+    //   x.push(action.payload);
+
+    //   return {
+    //     ...state,
+    //     history_detail: { ...state.history_detail, fullAnalytics: x }
+    //   };
+    // }
+
     default:
       return state;
   }

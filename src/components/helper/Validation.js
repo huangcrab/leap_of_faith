@@ -17,7 +17,12 @@ export function validateContent(data) {
       validation.hasLink = true;
     }
 
-    if (body.indexOf(".jpg") !== -1 || body.indexOf(".png") !== -1) {
+    if (
+      body.indexOf("![") !== -1 &&
+      (body.indexOf(".jpg") !== -1 ||
+        body.indexOf(".png") !== -1 ||
+        body.indexOf(".gif") !== -1)
+    ) {
       validation.hasImage = true;
     }
 

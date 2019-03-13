@@ -26,9 +26,9 @@ class HistoryAna extends Component {
         <div className="analytic-data">
           <div className="collection-one collection">
             {history_detail.analytic
-              ? Object.keys(history_detail.analytic).map(item => {
+              ? Object.keys(history_detail.analytic).map((item, index) => {
                   return item !== "integration" ? (
-                    <div className="collection-item">
+                    <div key={index} className="collection-item">
                       <span className="badge">
                         {history_detail.analytic[item]}
                       </span>

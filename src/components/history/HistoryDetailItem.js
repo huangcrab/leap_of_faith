@@ -3,7 +3,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import classnames from "classnames";
 
+import PropTypes from "prop-types";
+
 import { getActionUrl, getLinkUrl } from "../../apis";
+import { parseContent } from "../helper/Helper";
+
+import { connect } from "react-redux";
+import { updateFullAnalytics } from "../../actions/historyActions";
+
 import EditIcon from "../../assets/img/edit.svg";
 import ImageIcon from "../../assets/img/image.svg";
 import IntegrationIcon from "../../assets/img/integration.svg";
@@ -77,7 +84,6 @@ const CollapsibleBody = styled.div`
 
 class HistoryDetailItem extends Component {
   state = {
-    foucs: false,
     content: {},
     loading: false,
     err: "",
@@ -106,7 +112,11 @@ class HistoryDetailItem extends Component {
       axios
         .get(`${apiUrl}/getContent/${id}`)
         .then(res => {
-          this.setState({ validation: validateContent(res.data) });
+          const validation = validateContent(res.data);
+
+          this.props.updateFullAnalytics(validation, this.props.key);
+
+          this.setState({ validation });
 
           this.setState({ content: res.data });
           this.setState({ loading: false });
@@ -127,10 +137,13 @@ class HistoryDetailItem extends Component {
   onFocusClick = () => {
     this.setState({ focus: !this.state.focus });
   };
+  toggleFR = () => {
+    this.setState({ fr: !this.state.fr });
+  };
   render() {
-    const { question, answer } = this.props.item;
+    const { question, answer, type } = this.props.item;
 
-    const { focus, content } = this.state;
+    const { focus, content, fr } = this.state;
     const {
       hasImage,
       hasIntegration,
@@ -146,6 +159,7 @@ class HistoryDetailItem extends Component {
           <ResultItem className="result-item">
             <div className="upper">
               {question}
+
               <div className="right">
                 <div
                   className={classnames(
@@ -165,7 +179,12 @@ class HistoryDetailItem extends Component {
                     <img className="icon" src={EditIcon} alt="edit" />
                   </a>
 
-                  <img className="icon" src={LanguageIcon} alt="language" />
+                  <img
+                    onClick={this.toggleFR}
+                    className="icon"
+                    src={LanguageIcon}
+                    alt="language"
+                  />
                 </div>
               </div>
             </div>
@@ -207,7 +226,9 @@ class HistoryDetailItem extends Component {
           </ResultItem>
         </CollapsibleHeader>
         <CollapsibleBody className="collapsible-body">
-          {content != {} ? <HistoryDetailItemBody content={content} /> : null}
+          {content !== {} ? (
+            <HistoryDetailItemBody content={content} fr={fr} type={type} />
+          ) : null}
           <DynamicParams dynamic={this.props.dynamic} />
         </CollapsibleBody>
       </Item>
@@ -215,4 +236,11 @@ class HistoryDetailItem extends Component {
   }
 }
 
-export default HistoryDetailItem;
+HistoryDetailItem.propTypes = {
+  updateFullAnalytics: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { updateFullAnalytics }
+)(HistoryDetailItem);
