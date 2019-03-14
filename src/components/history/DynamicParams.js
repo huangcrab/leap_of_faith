@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import uuid from "uuid/v4";
 
 const Quote = styled.blockquote`
   color: black;
@@ -13,19 +14,19 @@ const Quote = styled.blockquote`
 const displayItem = item => {
   if (item.type === "TABLE") {
     return (
-      <table>
+      <table key={uuid()}>
         <tbody>
           <tr>
-            {item.value.headerColumns.items.map((ele, index) => (
-              <th key={index}>{ele.value.en}</th>
+            {item.value.headerColumns.items.map(ele => (
+              <th key={uuid()}>{ele.value.en}</th>
             ))}
           </tr>
-          {item.value.rows.items.map((ele, index) => {
+          {item.value.rows.items.map(ele => {
             return (
-              <tr key={index}>
-                {ele.columns.items.map((data, index) => {
+              <tr key={uuid()}>
+                {ele.columns.items.map(data => {
                   return (
-                    <td key={index}>
+                    <td key={uuid()}>
                       {data.type !== "LOCALIZATION"
                         ? data.value
                         : data.value.sourceValue}
@@ -50,7 +51,7 @@ const displayItem = item => {
 export default function DynamicParams(props) {
   const { dynamic } = props;
   return (
-    <Quote>
+    <Quote key={uuid()}>
       {dynamic
         ? dynamic.map(item => {
             return displayItem(item);

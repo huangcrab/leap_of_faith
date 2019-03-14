@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ResultItem = styled.li`
+export const ResultItem = styled.div`
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -27,6 +27,7 @@ export const ResultItem = styled.li`
   &:hover,
   &.focus {
     background: #bcdaf2;
+    cursor: pointer;
   }
 
   & .icon-group.disable {

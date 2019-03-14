@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
+import styled from "styled-components";
+import { getFullAnalytic } from "../helper/Helper";
 
 class HistoryAna extends Component {
   state = {
     history_detail: {},
     history_detail_loading: false,
-    history_detail_id_loading: false,
-    analytic: []
+    history_detail_id_loading: false
   };
 
   static getDerivedStateFromProps(nextProps) {
@@ -26,9 +27,9 @@ class HistoryAna extends Component {
         <div className="analytic-data">
           <div className="collection-one collection">
             {history_detail.analytic
-              ? Object.keys(history_detail.analytic).map((item, index) => {
+              ? Object.keys(history_detail.analytic).map(item => {
                   return item !== "integration" ? (
-                    <div key={index} className="collection-item">
+                    <div key={item} className="collection-item">
                       <span className="badge">
                         {history_detail.analytic[item]}
                       </span>
@@ -47,16 +48,25 @@ class HistoryAna extends Component {
                 Integration/Data Step:
               </div>
             ) : null}
-            {history_detail.full_analytic ? (
+            {history_detail.fullAnalytics.length > 0 ? (
               <React.Fragment>
                 <div className="collection-item">
-                  <span className="badge">15</span>Overlay Step:
+                  <span className="badge">
+                    {getFullAnalytic("overlay", history_detail.fullAnalytics)}
+                  </span>
+                  Overlay Step:
                 </div>
                 <div className="collection-item">
-                  <span className="badge">15</span>Image Step:
+                  <span className="badge">
+                    {getFullAnalytic("image", history_detail.fullAnalytics)}
+                  </span>
+                  Image Step:
                 </div>
                 <div className="collection-item">
-                  <span className="badge">15</span>Link Step:
+                  <span className="badge">
+                    {getFullAnalytic("link", history_detail.fullAnalytics)}
+                  </span>
+                  Link Step:
                 </div>
               </React.Fragment>
             ) : null}

@@ -6,7 +6,6 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 import { getActionUrl, getLinkUrl } from "../../apis";
-import { parseContent } from "../helper/Helper";
 
 import { connect } from "react-redux";
 import { updateFullAnalytics } from "../../actions/historyActions";
@@ -97,14 +96,6 @@ class HistoryDetailItem extends Component {
   };
 
   componentDidMount() {
-    if (
-      this.props.dynamic !== null &&
-      this.props.dynamic.length > 0 &&
-      this.props.dynamic[0].key !== ""
-    ) {
-      this.setState({ validation: { hasIntegration: true } });
-    }
-
     const id = this.props.item_id;
     const apiUrl = getActionUrl("content");
     if (apiUrl) {
@@ -117,6 +108,13 @@ class HistoryDetailItem extends Component {
           this.props.updateFullAnalytics(validation, this.props.key);
 
           this.setState({ validation });
+          if (
+            this.props.dynamic !== null &&
+            this.props.dynamic.length > 0 &&
+            this.props.dynamic[0].key !== ""
+          ) {
+            this.setState({ validation: { hasIntegration: true } });
+          }
 
           this.setState({ content: res.data });
           this.setState({ loading: false });

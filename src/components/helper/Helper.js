@@ -11,3 +11,17 @@ export function parseContent(body, markdown) {
     return <ReactHtml html={body} />;
   }
 }
+
+export function getFullAnalytic(type, analytic) {
+  switch (type) {
+    case "overlay":
+      return analytic.filter(item => item.hasOverlay).length;
+    case "image":
+      return analytic.filter(item => item.hasImage).length;
+    case "link":
+      return analytic.filter(item => item.hasLink).length;
+
+    default:
+      return null;
+  }
+}
