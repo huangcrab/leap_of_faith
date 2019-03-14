@@ -10,13 +10,8 @@ const Main = styled.div`
   display: table;
   background: #bcdaf2;
   width: 100%;
-  padding: 15px 9px;
-
-  & ${HistoryList} {
-    height: 100%;
-    overflow-y: scroll;
-    padding: 0 9px;
-  }
+  height: 100%;
+  padding: 0px 9px;
 `;
 
 const Header = styled.div`
