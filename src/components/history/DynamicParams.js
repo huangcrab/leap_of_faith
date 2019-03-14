@@ -18,7 +18,7 @@ export default function DynamicParams(props) {
         ? dynamic.map(item => {
             if (item.key !== "" && item.type !== "TABLE") {
               return (
-                <div>
+                <div key={item.key}>
                   {item.key}:<span> {item.value}</span>
                 </div>
               );

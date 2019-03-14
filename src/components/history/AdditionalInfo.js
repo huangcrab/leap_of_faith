@@ -30,7 +30,7 @@ class AdditionalInfo extends Component {
     const { option } = this.props;
     return (
       <React.Fragment>
-        <Click onClick={this.toggleDisplay}>
+        <Click id="click" onClick={this.toggleDisplay}>
           {this.state.fr ? option.ad_title_fr : option.ad_title_en}
         </Click>
         {this.state.show ? (

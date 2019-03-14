@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicParams should render banner text correctly with given strings 1`] = `
+<styled.blockquote>
+  <div
+    key="one"
+  >
+    one
+    :
+    <span>
+       
+      asd
+    </span>
+  </div>
+  <div
+    key="two"
+  >
+    two
+    :
+    <span>
+       
+      dsa
+    </span>
+  </div>
+</styled.blockquote>
+`;

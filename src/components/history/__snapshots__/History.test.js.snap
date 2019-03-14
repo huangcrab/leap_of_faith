@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History should render correctly in "debug" mode 1`] = `
+<Fragment>
+  <div
+    className="row history"
+  >
+    <Navbar
+      active="history"
+      logo={true}
+    />
+  </div>
+  <div
+    className="row history"
+  >
+    <div
+      className="col s12 m3 history-sections "
+    >
+      <div
+        className="history-search history-container"
+      >
+        <Connect(EnvPick) />
+        <Connect(HistorySearch) />
+      </div>
+    </div>
+    <div
+      className="col s12 m6 history-sections "
+    >
+      <div
+        className="history-main history-container"
+      >
+        <Connect(HistoryMain) />
+      </div>
+    </div>
+    <div
+      className=" col s12 m3 history-sections "
+    >
+      <Connect(HistoryAna) />
+    </div>
+  </div>
+</Fragment>
+`;
