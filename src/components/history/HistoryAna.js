@@ -4,6 +4,41 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { getFullAnalytic } from "../helper/Helper";
 
+const HistoryAnalytic = styled.div`
+  padding: 15px 18px !important;
+
+  & .collection {
+    border: none;
+    border-radius: 8px;
+  }
+
+  & .analytic-data {
+    background: white;
+    border-radius: 8px;
+    color: black;
+    margin-top: 15px;
+    padding: 9px;
+  }
+
+  & .collection .collection-item {
+    border-bottom: 1px solid #a2d6d8 !important;
+    padding: 4px 2px 0 2px;
+    font-weight: bold;
+  }
+
+  & .analytic-title {
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  & .step-number {
+    font-weight: bold;
+    font-size: 60px;
+
+    color: #fd7f80;
+  }
+`;
+
 class HistoryAna extends Component {
   state = {
     history_detail: {},
@@ -22,7 +57,7 @@ class HistoryAna extends Component {
   render() {
     const { history_detail, history_detail_loading } = this.state;
     return (
-      <div className="history-analytic history-container">
+      <HistoryAnalytic className="history-analytic history-container">
         <div className="center analytic-title">Analytics</div>
         <div className="analytic-data">
           <div className="collection-one collection">
@@ -78,7 +113,7 @@ class HistoryAna extends Component {
               : ""}
           </div>
         </div>
-      </div>
+      </HistoryAnalytic>
     );
   }
 }

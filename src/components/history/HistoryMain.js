@@ -11,6 +11,12 @@ const Main = styled.div`
   background: #bcdaf2;
   width: 100%;
   padding: 15px 9px;
+
+  & ${HistoryList} {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0 9px;
+  }
 `;
 
 const Header = styled.div`
@@ -79,7 +85,7 @@ class HistoryMain extends Component {
       history_detail_id_loading
     } = this.state;
     return (
-      <React.Fragment>
+      <Main>
         <Header className="row">
           {history_detail.info ? (
             <React.Fragment>
@@ -124,7 +130,7 @@ class HistoryMain extends Component {
             </React.Fragment>
           ) : null}
         </Footer>
-      </React.Fragment>
+      </Main>
     );
   }
 }

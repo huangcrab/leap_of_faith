@@ -22,14 +22,16 @@ class App extends Component {
           <div className="App">
             {/* <ThreeBack /> */}
             <Background />
-            <Route exact path="/" component={Landing} />
+            <Switch>
+              <Route exact path="/" component={Landing} />
 
-            {/* <Route exact path="/content" component={Content} />
+              {/* <Route exact path="/content" component={Content} />
           <Route exact path="/logic" component={Logic} /> */}
 
-            <Route exact path="/history" component={History} />
+              <Route exact path="/history" component={History} />
 
-            {/* <Route exact path="/automation" component={Automation} /> */}
+              {/* <Route exact path="/automation" component={Automation} /> */}
+            </Switch>
           </div>
         </Router>
       </Provider>
