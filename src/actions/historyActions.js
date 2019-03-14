@@ -49,7 +49,7 @@ export const getHistoryDetail = (id, info, env) => dispatch => {
     .catch(err =>
       dispatch({
         type: HISTORY_ERROR,
-        payload: err.data
+        payload: { getDetail_err: err.response.data }
       })
     );
   dispatch(setHistoryDetailIDLoading());
@@ -68,7 +68,7 @@ export const getHistoryDetail = (id, info, env) => dispatch => {
     .catch(err =>
       dispatch({
         type: HISTORY_ERROR,
-        payload: err.data
+        payload: { getDetail_err: err.response.data }
       })
     );
 };
@@ -77,7 +77,7 @@ export const getHistorySearch = (id, env) => dispatch => {
   if (id === "") {
     dispatch({
       type: HISTORY_INPUT_ERROR,
-      payload: "Value can not be empty"
+      payload: { input_error: "Value can not be empty" }
     });
   } else {
     dispatch(setHistorySearchLoading());
@@ -99,12 +99,12 @@ export const getHistorySearch = (id, env) => dispatch => {
           payload: res.data.records
         })
       )
-      .catch(err =>
+      .catch(err => {
         dispatch({
           type: HISTORY_ERROR,
-          payload: err.data
-        })
-      );
+          payload: { search_err: err.response.data }
+        });
+      });
   }
 };
 

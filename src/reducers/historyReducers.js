@@ -20,9 +20,7 @@ const initialState = {
   history_search_loading: false,
   history_detail_loading: false,
   history_detail_id_loading: false,
-  error: {
-    search_err: ""
-  }
+  error: {}
 };
 
 export default function(state = initialState, action) {
@@ -33,7 +31,8 @@ export default function(state = initialState, action) {
         history_search: [],
         history_detail: {
           fullAnalytics: []
-        }
+        },
+        error: {}
       };
     case HISTORY_INPUT_ERROR:
       return {
