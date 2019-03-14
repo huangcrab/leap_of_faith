@@ -10,19 +10,50 @@ const Quote = styled.blockquote`
   }
 `;
 
+const displayItem = item => {
+  if (item.type === "TABLE") {
+    return (
+      <table>
+        <tbody>
+          <tr>
+            {item.value.headerColumns.items.map((ele, index) => (
+              <th key={index}>{ele.value.en}</th>
+            ))}
+          </tr>
+          {item.value.rows.items.map((ele, index) => {
+            return (
+              <tr key={index}>
+                {ele.columns.items.map((data, index) => {
+                  return (
+                    <td key={index}>
+                      {data.type !== "LOCALIZATION"
+                        ? data.value
+                        : data.value.sourceValue}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  } else {
+    return (
+      <div key={item.key}>
+        {item.key}:<span> {item.value}</span>
+      </div>
+    );
+  }
+};
+
 export default function DynamicParams(props) {
   const { dynamic } = props;
   return (
     <Quote>
       {dynamic
         ? dynamic.map(item => {
-            if (item.key !== "" && item.type !== "TABLE") {
-              return (
-                <div key={item.key}>
-                  {item.key}:<span> {item.value}</span>
-                </div>
-              );
-            } else return null;
+            return displayItem(item);
           })
         : null}
     </Quote>
