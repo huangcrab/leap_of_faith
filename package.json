@@ -47,5 +47,6 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
-  }
+  },
+  "homepage": "http://blueprints.bellsolutionstech.ca:4443/authormaster"
 }

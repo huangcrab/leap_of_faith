@@ -142,12 +142,7 @@ class HistoryDetailItem extends Component {
     const { question, answer, type } = this.props.item;
 
     const { focus, content, fr } = this.state;
-    const {
-      hasImage,
-      hasIntegration,
-      hasOverlay,
-      hasLink
-    } = this.state.validation;
+    const { hasImage, hasIntegration, hasOverlay } = this.state.validation;
     return (
       <Item>
         <CollapsibleHeader

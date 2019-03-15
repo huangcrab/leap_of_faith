@@ -6,6 +6,7 @@ import logo from "../../assets/img/logo.svg";
 import { setGlitch } from "../../actions/uxActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import ThreeBack from "../layout/ThreeBack";
 
 import "./landing.css";
 class Landing extends Component {
@@ -19,6 +20,7 @@ class Landing extends Component {
   render() {
     return (
       <div>
+        <ThreeBack />
         <div className="center brand-landing">
           <img className="brand-img valign" src={logo} alt="AuthorMaster" />
         </div>

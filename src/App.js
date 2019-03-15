@@ -6,7 +6,7 @@ import Landing from "./components/layout/Landing";
 import History from "./components/history/History";
 
 import Background from "./components/layout/Background";
-//import ThreeBack from "./components/layout/ThreeBack";
+import ThreeBack from "./components/layout/ThreeBack";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -18,10 +18,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router basename="/authormaster">
           <div className="App">
-            {/* <ThreeBack /> */}
-            <Background />
+            {window.WebGLRenderingContext ? <ThreeBack /> : <Background />}
+
             <Switch>
               <Route exact path="/" component={Landing} />
 

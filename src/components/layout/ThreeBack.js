@@ -86,7 +86,6 @@ class ThreeBack extends Component {
     this.mount.removeChild(this.renderer.domElement);
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps.isGlitch);
     if (nextProps.isGlitch) {
       this.effectPass.renderToScreen = false;
       this.glitcheffectPass.renderToScreen = true;
