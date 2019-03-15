@@ -31,3 +31,22 @@ body {
 .icon-group .icon {
   margin: 0 0 0 10px;
 }
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 10%;
+  left: 7%;
+}
+
+#toast-container .toast {
+  background: #fb0102;
+  color: white;
+}
+/* .toast-message {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fb0102;
+  color: white;
+} */

@@ -2,6 +2,8 @@ import React from "react";
 import ReactHtml from "raw-html-react";
 import ReactMarkdown from "react-markdown";
 import { Markdown } from "react-showdown";
+import M from "materialize-css";
+import styled from "styled-components";
 
 export function parseContent(body, markdown) {
   if (markdown === "1") {
@@ -24,4 +26,12 @@ export function getFullAnalytic(type, analytic) {
     default:
       return null;
   }
+}
+
+export function displayError(message) {
+  Object.keys(message).forEach(err => {
+    M.toast({
+      html: `<div class='toast-message'>${message[err]}</div>`
+    });
+  });
 }

@@ -34,19 +34,19 @@ export default function(state = initialState, action) {
         },
         error: {}
       };
-    case HISTORY_INPUT_ERROR:
-      return {
-        ...state,
-        error: { ...state.error, input_err: action.payload }
-      };
+
     case HISTORY_ERROR:
       return {
         ...state,
-        error: { ...state.error, search_err: action.payload }
+        error: { ...state.error, ...action.payload },
+        history_search_loading: false,
+        history_detail_loading: false,
+        history_detail_id_loading: false
       };
     case SET_ENV:
       return {
         ...state,
+        error: {},
         environment: action.payload
       };
     case HISTORY_DETAIL_LOADING:

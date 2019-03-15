@@ -11,7 +11,7 @@ import {
 
 import SearchIcon from "../../assets/img/search-solid.svg";
 
-import HistorySearchItem from "./HistorySearchItem";
+import HistorySearchResult from "./HistorySearchResult";
 
 const Searchbar = styled.div`
   margin-bottom: 0 !important;
@@ -38,21 +38,10 @@ const Searchbar = styled.div`
   }
 `;
 
-const SearchResult = styled.div`
-  height: 80%;
-  overflow-y: scroll;
-  & .result-collection {
-    margin-top: 0;
-  }
-`;
-
 class HistorySearch extends Component {
   state = {
     env: "",
-    tn: "",
-    loading_result: false,
-    history_search: [],
-    error: {}
+    tn: ""
   };
 
   componentDidMount() {
@@ -61,10 +50,7 @@ class HistorySearch extends Component {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      env: nextProps.history.environment,
-      error: nextProps.history.error,
-      loading_result: nextProps.history.history_search_loading,
-      history_search: nextProps.history.history_search
+      env: nextProps.history.environment
     };
   }
 
@@ -83,7 +69,7 @@ class HistorySearch extends Component {
   };
 
   render() {
-    const { tn, loading_result, error, history_search, env } = this.state;
+    const { tn } = this.state;
     return (
       <React.Fragment>
         <Searchbar className="col s12 center row">
@@ -106,15 +92,7 @@ class HistorySearch extends Component {
           </div>
         </Searchbar>
 
-        <SearchResult className="search-result col s12">
-          <ul className="result-collection">
-            {loading_result
-              ? "Loading"
-              : history_search.map((history, index) => (
-                  <HistorySearchItem key={index} item={history} env={env} />
-                ))}
-          </ul>
-        </SearchResult>
+        <HistorySearchResult />
       </React.Fragment>
     );
   }

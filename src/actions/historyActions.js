@@ -76,7 +76,7 @@ export const getHistoryDetail = (id, info, env) => dispatch => {
 export const getHistorySearch = (id, env) => dispatch => {
   if (id === "") {
     dispatch({
-      type: HISTORY_INPUT_ERROR,
+      type: HISTORY_ERROR,
       payload: { input_error: "Value can not be empty" }
     });
   } else {
