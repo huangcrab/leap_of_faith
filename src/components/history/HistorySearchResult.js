@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+import Spinner from "../helper/Spinner";
 import { displayError } from "../helper/Helper";
 import HistorySearchItem from "./HistorySearchItem";
 
@@ -34,13 +35,15 @@ class HistorySearchResult extends Component {
     return (
       <SearchResult className="search-result col s12">
         {error ? displayError(error) : null}
-        <ul className="result-collection">
-          {loading_result
-            ? "Loading"
-            : history_search.map((history, index) => (
-                <HistorySearchItem key={index} item={history} env={env} />
-              ))}
-        </ul>
+        {loading_result ? (
+          <Spinner />
+        ) : (
+          <ul className="result-collection">
+            {history_search.map((history, index) => (
+              <HistorySearchItem key={index} item={history} env={env} />
+            ))}
+          </ul>
+        )}
       </SearchResult>
     );
   }
