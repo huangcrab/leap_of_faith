@@ -29,7 +29,7 @@ const displayItem = item => {
                     <td key={uuid()}>
                       {data.type !== "LOCALIZATION"
                         ? data.value
-                        : data.value.sourceValue}
+                        : data.value.transformedValue}
                     </td>
                   );
                 })}
@@ -42,9 +42,15 @@ const displayItem = item => {
   } else {
     return (
       <div key={item.key}>
-        {item.key}:<span> {item.value}</span>
+        {item.key}:
+        <span>
+          {item.value && typeof item.value === "object"
+            ? item.value.transformedValue
+            : item.value}
+        </span>
       </div>
     );
+    // return null;
   }
 };
 

@@ -19,7 +19,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {/* <ThreeBack /> */}
         <div className="center brand-landing">
           <img className="brand-img valign" src={logo} alt="AuthorMaster" />
@@ -31,7 +31,7 @@ class Landing extends Component {
           </h1>
           <p className="right">--- The power is within you</p>
         </div>
-      </div>
+      </>
     );
   }
 }

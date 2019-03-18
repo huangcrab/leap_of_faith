@@ -1,5 +1,14 @@
+.brand-landing {
+  margin-top: 0px !important;
+  padding-top: 40px;
+}
+
 .navbar {
-  margin: 40px 0;
+  padding: 40px 0;
+}
+
+.navbar ul {
+  margin: 0;
 }
 
 .navbar ul li {
