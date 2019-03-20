@@ -74,7 +74,8 @@ export default function(state = initialState, action) {
         ...state,
         history_detail: {
           ...state.history_detail,
-          ...action.payload
+          ...action.payload,
+          fullAnalytics: []
         },
         history_detail_loading: false
       };
@@ -98,6 +99,7 @@ export default function(state = initialState, action) {
 
     case SET_FULL_ANALYTICS: {
       const x = state.history_detail.fullAnalytics;
+      console.log(state.history_detail.fullAnalytics);
       x.push(action.payload);
 
       return {

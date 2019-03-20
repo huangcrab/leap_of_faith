@@ -113,7 +113,9 @@ class HistoryDetailItem extends Component {
             this.props.dynamic.length > 0 &&
             this.props.dynamic[0].key !== ""
           ) {
-            this.setState({ validation: { hasIntegration: true } });
+            this.setState({
+              validation: { ...validation, hasIntegration: true }
+            });
           }
 
           this.setState({ content: res.data });
