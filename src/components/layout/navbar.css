@@ -40,8 +40,8 @@
   text-decoration: none;
 }
 
-li.active {
-  color: red;
+li.active::after {
+  transform: scale(1, 1) !important;
 }
 
 .nav-logo {

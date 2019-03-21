@@ -5,7 +5,7 @@ import EnvPick from "./EnvPick";
 import HistorySearch from "./HistorySearch";
 import HistoryMain from "./HistoryMain";
 import HistoryAna from "./HistoryAna";
-// import Background from "../layout/Background";
+import Background from "../layout/Background";
 import styled from "styled-components";
 
 const Section = styled.div`
@@ -42,6 +42,7 @@ export default class History extends Component {
   render() {
     return (
       <React.Fragment>
+        <Background />
         <Row className="row">
           <Navbar active="history" logo={true} />
         </Row>

@@ -4,6 +4,8 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import Landing from "./components/layout/Landing";
 import History from "./components/history/History";
+import Content from "./components/content/Content";
+import Logic from "./components/logic/Logic";
 
 import Background from "./components/layout/Background";
 //import ThreeBack from "./components/layout/ThreeBack";
@@ -21,12 +23,12 @@ class App extends Component {
         <Router basename="/authormaster">
           <div className="App">
             {/* {window.WebGLRenderingContext ? <ThreeBack /> : <Background />} */}
-            <Background />
+            {/* <Background /> */}
             <Switch>
               <Route exact path="/" component={Landing} />
 
-              {/* <Route exact path="/content" component={Content} />
-          <Route exact path="/logic" component={Logic} /> */}
+              <Route exact path="/content" component={Content} />
+              <Route exact path="/logic" component={Logic} />
 
               <Route exact path="/history" component={History} />
 

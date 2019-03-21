@@ -3,11 +3,7 @@
   --secondary-color: #00ffed;
 }
 
-body {
-  overflow: hidden;
-}
-
-.brand-img {
+svg.brand-img {
   height: 40px;
 }
 
