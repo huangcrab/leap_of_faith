@@ -5,6 +5,7 @@ import styled from "styled-components";
 import M from "materialize-css";
 
 import HistoryDetailItem from "./HistoryDetailItem";
+import Spinner from "../helper/Spinner";
 
 const Main = styled.div`
   display: table;
@@ -97,6 +98,9 @@ class HistoryMain extends Component {
           ) : null}
         </Header>
         <HistoryList className="history-list">
+          {history_detail_loading || history_detail_id_loading ? (
+            <Spinner />
+          ) : null}
           <Collapsible className="collapsible" ref={this.collapse}>
             {history_detail.detail &&
             !history_detail_loading &&

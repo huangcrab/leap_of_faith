@@ -64,7 +64,6 @@ const BackgroundImage = styled.div`
       return props.glitch ? Animation : null;
     }};
     ${props => {
-      console.log(props.delay);
       return css`
         animation-delay: ${props.delay}ms;
       `;
