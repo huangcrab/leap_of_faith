@@ -15,6 +15,9 @@ import {
 import axios from "axios";
 import { getEnvUrl } from "../apis";
 
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtpZC1ibHVlcHJpbnRzIn0.eyJzdWIiOiJCZWxsXFxiNjcyMjEiLCJqdGkiOiJmZmQ5M2ZmMi1jYzQyLTRlNTQtYjBjMS1lNTQ3Nzg1MTQzMzEiLCJpYXQiOjE1NTM2MDgwNDQsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCZWxsXFxiNjcyMjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiQkxVRVBSSU5UU19BR0VOVCIsIkJMVUVQUklOVFNfQVVUSE9SIl0sIm5iZiI6MTU1MzYwODA0NCwiZXhwIjoxNTUzNjA4MzQ0LCJpc3MiOiJCUEkiLCJhdWQiOiJCUEkiLCJhZEdyb3VwcyI6WyJCUF9BVVRIT1JfRlNfQlRTX1dSSVRFIiwiQlBfQVVUSE9SX0ZJRUxEU0VSVklDRVNfV1JJVEUiLCJCUF9BVVRIT1JfRklFTERTRVJWSUNFU19SRUFEIiwiQlBfQUdFTlRfQURHUk9VUFRFU1QiLCJCUF9BR0VOVF9UQ1NQRUNJQUxQUk9KRUNUMyIsIkJQX0FHRU5UX0JVU05BVCIsIkJQX0FHRU5UX0JUU19DUk9SUVIiLCJCUF9BR0VOVF9CVFMiLCJCUF9BR0VOVF9QSUxPVDEyIiwiQlBfQUdFTlRfRklFTERTRVJWSUNFUyIsIkJQX0FVVEhPUl9GSUVMRFNFUlZJQ0VTIl0sImdpdmVuTmFtZSI6IlhpZSIsInN1ck5hbWUiOiJIdWFuZyIsInByZWZlcnJlZExhbmd1YWdlIjoiRU4iLCJlbXBsb3llZU51bWJlciI6IjQzNjcyMjEiLCJsZWdhY3lQZWluIjoiQjY3MjIxIn0.pc5_cbQvCM1MjG9R_G7RLgsNxfLAK5g79t4YQQhBFLw";
+
 export const setEnvironmnet = env => dispatch => {
   dispatch({
     type: SET_ENV,
@@ -31,10 +34,12 @@ export const resetHistory = () => dispatch => {
 export const getHistoryDetail = (id, info, env) => dispatch => {
   dispatch(setHistoryDetailLoading());
   const apiUrl = getEnvUrl(env);
+  const option =
+    env === "PROD"
+      ? { withCredentials: true }
+      : { headers: { Authorization: "Bearer " + token } };
   axios
-    .get(`${apiUrl}/app/GetFlowDetails?flowId=${id}`, {
-      withCredentials: true
-    })
+    .get(`${apiUrl}/app/GetFlowDetails?flowId=${id}`, option)
     .then(res => {
       dispatch({
         type: GET_HISTORY_DETAIL,
@@ -52,10 +57,12 @@ export const getHistoryDetail = (id, info, env) => dispatch => {
       })
     );
   dispatch(setHistoryDetailIDLoading());
+
   axios
-    .get(`${apiUrl}/CustomerHistory?taskIdAndAcronym=${id}&api_key=undefined`, {
-      withCredentials: true
-    })
+    .get(
+      `${apiUrl}/CustomerHistory?taskIdAndAcronym=${id}&api_key=undefined`,
+      option
+    )
     .then(res => {
       dispatch({
         type: GET_HISTORY_DETAIL_ID,
@@ -87,11 +94,12 @@ export const getHistorySearch = (id, env) => dispatch => {
     };
 
     const apiUrl = getEnvUrl(env);
-
+    const option =
+      env === "PROD"
+        ? { withCredentials: true }
+        : { headers: { Authorization: "Bearer " + token } };
     axios
-      .post(`${apiUrl}/history/searchCustomerHistory`, data, {
-        withCredentials: true
-      })
+      .post(`${apiUrl}/history/searchCustomerHistory`, data, option)
       .then(res =>
         dispatch({
           type: GET_HISTORY_SEARCH,
