@@ -9,7 +9,8 @@ import {
   GET_HISTORY_DETAIL,
   SET_BASIC_ANALYTICS,
   RESET_HISTORY,
-  SET_FULL_ANALYTICS
+  SET_FULL_ANALYTICS,
+  TOKEN_ERROR
 } from "../actions/types";
 
 const initialState = {
@@ -33,7 +34,11 @@ export default function(state = initialState, action) {
         },
         error: {}
       };
-
+    case TOKEN_ERROR:
+      return {
+        ...state,
+        error: { ...state.error, ...action.payload }
+      };
     case HISTORY_ERROR:
       return {
         ...state,

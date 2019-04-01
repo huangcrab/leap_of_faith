@@ -97,9 +97,11 @@ class HistoryDetailItem extends Component {
 
   componentDidMount() {
     const id = this.props.item_id;
+    const { token } = this.props;
     const apiUrl = getActionUrl("content");
     if (apiUrl) {
       this.setState({ loading: true });
+      //const option = { headers: { Authorization: "Bearer " + token } };
       axios
         .get(`${apiUrl}/getContent/${id}`)
         .then(res => {

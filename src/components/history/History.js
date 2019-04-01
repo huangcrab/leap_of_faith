@@ -8,6 +8,8 @@ import HistoryAna from "./HistoryAna";
 import Background from "../layout/Background";
 import styled from "styled-components";
 
+import TokenInject from "./TokenInject";
+
 const Section = styled.div`
   height: 80vh;
 `;
@@ -64,6 +66,7 @@ export default class History extends Component {
             </AnalyticContainer>
           </Section>
         </Row>
+        <TokenInject />
       </React.Fragment>
     );
   }

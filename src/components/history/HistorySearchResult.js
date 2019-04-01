@@ -27,11 +27,12 @@ class HistorySearchResult extends Component {
       env: nextProps.history.environment,
       error: nextProps.history.error,
       loading_result: nextProps.history.history_search_loading,
-      history_search: nextProps.history.history_search
+      history_search: nextProps.history.history_search,
+      token: nextProps.token
     };
   }
   render() {
-    const { loading_result, error, history_search, env } = this.state;
+    const { loading_result, error, history_search, env, token } = this.state;
     return (
       <SearchResult className="search-result col s12">
         {error ? displayError(error) : null}
@@ -40,7 +41,12 @@ class HistorySearchResult extends Component {
         ) : (
           <ul className="result-collection">
             {history_search.map((history, index) => (
-              <HistorySearchItem key={index} item={history} env={env} />
+              <HistorySearchItem
+                key={index}
+                item={history}
+                env={env}
+                token={token}
+              />
             ))}
           </ul>
         )}
@@ -54,7 +60,8 @@ HistorySearchResult.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.history
+  history: state.history,
+  token: state.token.token
 });
 
 export default connect(

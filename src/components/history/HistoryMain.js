@@ -70,7 +70,8 @@ class HistoryMain extends Component {
     return {
       history_detail: props.history_detail,
       history_detail_id_loading: props.history_detail_id_loading,
-      history_detail_loading: props.history_detail_loading
+      history_detail_loading: props.history_detail_loading,
+      token: props.token
     };
   }
 
@@ -78,7 +79,8 @@ class HistoryMain extends Component {
     const {
       history_detail,
       history_detail_loading,
-      history_detail_id_loading
+      history_detail_id_loading,
+      token
     } = this.state;
     return (
       <Main>
@@ -111,6 +113,7 @@ class HistoryMain extends Component {
                     item={item}
                     item_id={history_detail.detail_with_id[index].stepId}
                     dynamic={item.dynamicContentParameters}
+                    token={token}
                   />
                 ))
               : null}
@@ -137,13 +140,15 @@ class HistoryMain extends Component {
 HistoryMain.propTypes = {
   history_detail: PropTypes.object.isRequired,
   history_detail_loading: PropTypes.bool.isRequired,
-  history_detail_id_loading: PropTypes.bool.isRequired
+  history_detail_id_loading: PropTypes.bool.isRequired,
+  token: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   history_detail: state.history.history_detail,
   history_detail_loading: state.history.history_detail_loading,
-  history_detail_id_loading: state.history.history_detail_id_loading
+  history_detail_id_loading: state.history.history_detail_id_loading,
+  token: state.token.token
 });
 
 export default connect(

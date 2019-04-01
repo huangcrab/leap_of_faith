@@ -79,6 +79,8 @@ const Grid = styled.div`
   }
 `;
 
+const Control = styled.div``;
+
 class Content extends Component {
   state = {
     checkAll: false,

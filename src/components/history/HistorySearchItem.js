@@ -11,8 +11,7 @@ class HistorySearchItem extends Component {
     focus: false
   };
   onResultItemClick = () => {
-    const { env } = this.props;
-    const { item } = this.props;
+    const { item, env, token } = this.props;
     const start = new Date(item.bpStartTime);
     const end = new Date(item.bpEndTime);
 
@@ -27,7 +26,7 @@ class HistorySearchItem extends Component {
       bitsType: item.bitsType
     };
     this.setState({ focus: true });
-    this.props.getHistoryDetail(item.bpmInstanceId, info, env);
+    this.props.getHistoryDetail(item.bpmInstanceId, info, env, token);
   };
 
   render() {

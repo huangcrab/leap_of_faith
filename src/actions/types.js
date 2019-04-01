@@ -1,3 +1,6 @@
+//TOKEN
+export const UPDATE_TOKEN = "UPDATE_TOKEN";
+export const TOKEN_ERROR = "TOKEN_ERROR";
 //UX
 export const SET_GLITCH = "SET_GLITCH";
 

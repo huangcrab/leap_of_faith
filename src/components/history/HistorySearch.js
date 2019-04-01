@@ -41,7 +41,8 @@ const Searchbar = styled.div`
 class HistorySearch extends Component {
   state = {
     env: "",
-    tn: ""
+    tn: "",
+    token: ""
   };
 
   componentDidMount() {
@@ -50,7 +51,8 @@ class HistorySearch extends Component {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      env: nextProps.history.environment
+      env: nextProps.history.environment,
+      token: nextProps.token
     };
   }
 
@@ -60,11 +62,12 @@ class HistorySearch extends Component {
 
   onSearchClick = () => {
     this.props.resetHistory();
+    const { tn, env, token } = this.state;
 
     if (this.state.tn.indexOf("-") !== -1) {
-      this.props.getHistoryDetail(this.state.tn, {}, this.state.env);
+      this.props.getHistoryDetail(tn, {}, env, token);
     } else {
-      this.props.getHistorySearch(this.state.tn, this.state.env);
+      this.props.getHistorySearch(tn, env, token);
     }
   };
 
@@ -106,7 +109,8 @@ HistorySearch.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.history
+  history: state.history,
+  token: state.token.token
 });
 
 export default connect(
