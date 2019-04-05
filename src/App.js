@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import Landing from "./components/layout/Landing";
-import History from "./components/history/History";
+//import History from "./components/history/History";
 
 import Background from "./components/layout/Background";
-//import ThreeBack from "./components/layout/ThreeBack";
+import ThreeBack from "./components/layout/ThreeBack";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -21,7 +21,8 @@ class App extends Component {
         <Router basename="/authormaster">
           <div className="App">
             {/* {window.WebGLRenderingContext ? <ThreeBack /> : <Background />} */}
-            <Background />
+            {/* <Background /> */}
+            <ThreeBack />
             <Switch>
               <Route exact path="/" component={Landing} />
 

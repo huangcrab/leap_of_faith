@@ -85,8 +85,20 @@ class ThreeBack extends Component {
     window.onresize = this.mount.onresize;
     this.mount.removeChild(this.renderer.domElement);
   }
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.isGlitch) {
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (nextProps.isGlitch) {
+  //     this.effectPass.renderToScreen = false;
+  //     this.glitcheffectPass.renderToScreen = true;
+  //     this.composer.addPass(this.glitcheffectPass);
+  //   } else {
+  //     this.composer.removePass(this.glitcheffectPass);
+  //     this.glitcheffectPass.renderToScreen = false;
+  //     this.effectPass.renderToScreen = true;
+  //   }
+  // }
+
+  componentDidUpdate() {
+    if (this.state.isGlitch) {
       this.effectPass.renderToScreen = false;
       this.glitcheffectPass.renderToScreen = true;
       this.composer.addPass(this.glitcheffectPass);
@@ -95,6 +107,10 @@ class ThreeBack extends Component {
       this.glitcheffectPass.renderToScreen = false;
       this.effectPass.renderToScreen = true;
     }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    return { isGlitch: nextProps.isGlitch };
   }
 
   start = () => {
